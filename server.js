@@ -8,6 +8,12 @@ import cookieParser from "cookie-parser";
 import User from "./models/User.js";
 import Order from "./models/Order.js";
 import { requireAuth } from "./middleware/requireAuth.js";
+import cors from "cors";
+
+app.use(cors({
+  origin: true,
+  credentials: true
+}));
 
 const app = express();
 app.use(express.json());
@@ -76,3 +82,4 @@ app.post("/api/auth/logout", (req, res) => {
 
 
 app.listen(process.env.PORT, () => console.log("✅ Backend Running on Port", process.env.PORT));
+
